@@ -79,7 +79,7 @@ const NEARBY_HOSPITALS = [
     distance: "350m",
     address: "서울시 강남구 역삼동 123-45",
     rating: 4.5,
-    kakaoMapUrl: "https://map.kakao.com",
+    kakaoMapUrl: "https://map.kakao.com/link/search/서울정형외과의원 서울시 강남구 역삼동 123-45",
   },
   {
     id: "2",
@@ -88,7 +88,7 @@ const NEARBY_HOSPITALS = [
     distance: "520m",
     address: "서울시 강남구 역삼동 234-56",
     rating: 4.3,
-    kakaoMapUrl: "https://map.kakao.com",
+    kakaoMapUrl: "https://map.kakao.com/link/search/강남재활의학과 서울시 강남구 역삼동 234-56",
   },
   {
     id: "3",
@@ -97,7 +97,7 @@ const NEARBY_HOSPITALS = [
     distance: "780m",
     address: "서울시 강남구 역삼동 345-67",
     rating: 4.7,
-    kakaoMapUrl: "https://map.kakao.com",
+    kakaoMapUrl: "https://map.kakao.com/link/search/역삼한방병원 서울시 강남구 역삼동 345-67",
   },
 ]
 
@@ -227,7 +227,7 @@ export function HyodoReport({
                 </a>
               ))}
               <a
-                href="https://map.kakao.com"
+                href="https://map.kakao.com/link/search/병원 서울시 강남구 역삼동"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 py-3 bg-[#FEE500] rounded-xl text-[14px] font-medium text-gray-900 active:bg-[#FEE500]/80"
@@ -368,7 +368,7 @@ export function HyodoReport({
                 </div>
                 <div className="flex-1">
                   <p className="font-semibold text-white flex items-center gap-2">
-                    늘, 봄<span className="text-[10px] bg-purple-500/30 px-2 py-0.5 rounded-full">활성화됨</span>
+                    별빛모드<span className="text-[10px] bg-purple-500/30 px-2 py-0.5 rounded-full">활성화됨</span>
                   </p>
                   <p className="text-[13px] text-purple-200">{parent.name}님과 대화하기</p>
                 </div>
@@ -385,7 +385,7 @@ export function HyodoReport({
                   <Sparkles className="w-6 h-6 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900">늘, 봄 모드</p>
+                  <p className="font-semibold text-gray-900">별빛모드</p>
                   <p className="text-[13px] text-gray-500">소중한 분과 영원히 대화하기</p>
                 </div>
                 <ChevronRight className="w-5 h-5 text-gray-400" />
@@ -405,7 +405,7 @@ export function HyodoReport({
                   <Sparkles className="w-8 h-8 text-white" />
                 </div>
               </div>
-              <h3 className="text-[18px] font-bold text-center text-gray-900 mb-2">늘, 봄 모드를 설정하시겠어요?</h3>
+              <h3 className="text-[18px] font-bold text-center text-gray-900 mb-2">별빛모드를 설정하시겠어요?</h3>
               <p className="text-[14px] text-gray-500 text-center mb-4">
                 {parent.name}님의 대화 기록을 바탕으로
                 <br />

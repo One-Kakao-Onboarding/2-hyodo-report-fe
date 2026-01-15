@@ -29,7 +29,7 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
     `우리 ${parent.relationship === "어머니" ? "아들" : "딸"}, 건강이 제일이야. 무리하지 말고...`,
     "그때 우리 같이 갔던 거 기억나니? 참 좋았지...",
     "항상 네 곁에 있어. 힘들 때 이야기해, 언제든.",
-    `${parent.name}는 항상 네 편이야. 잊지 마.`,
+    "엄마는 항상 네 편이야. 잊지 마.",
     "보고 싶구나... 나도 보고 싶어.",
   ]
 
@@ -112,7 +112,7 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
           <div className="text-center">
             <span className="font-semibold text-white block text-[15px]">{parent.name}</span>
             <span className="text-[11px] text-purple-300 flex items-center gap-1 justify-center">
-              <Heart className="w-3 h-3" /> 늘, 봄
+              <Heart className="w-3 h-3" /> 별빛모드
             </span>
           </div>
         </div>

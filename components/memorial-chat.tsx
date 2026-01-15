@@ -20,6 +20,7 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
   const [farewellMessage, setFarewellMessage] = useState("")
   const [showMenu, setShowMenu] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const isSendingRef = useRef(false)
 
   const MEMORIAL_RESPONSES = [
@@ -52,14 +53,21 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
     if (!message.trim() || isSendingRef.current) return
     isSendingRef.current = true
 
+    const messageContent = message.trim()
+
     const newMessage: Message = {
       id: Date.now().toString(),
       type: "user",
-      content: message.trim(),
+      content: messageContent,
       timestamp: new Date(),
     }
     setMessages((prev) => [...prev, newMessage])
+
+    // 입력창 초기화 (state와 ref 둘 다)
     setMessage("")
+    if (inputRef.current) {
+      inputRef.current.value = ""
+    }
 
     setIsTyping(true)
     setTimeout(() => {
@@ -196,6 +204,7 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
       <div className="px-3 py-3 bg-[#1a1a2e] border-t border-white/10">
         <div className="flex items-center gap-2">
           <input
+            ref={inputRef}
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}

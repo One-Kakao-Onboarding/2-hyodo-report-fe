@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
-import { TokenStorage, saveUserInfo } from "@/lib/auth"
+import { TokenStorage } from "@/lib/api"
+import { saveUserInfo } from "@/lib/auth"
 
 export default function AuthCallbackPage() {
   const searchParams = useSearchParams()

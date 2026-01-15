@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import { TokenStorage } from "@/lib/api"
 import { saveUserInfo } from "@/lib/auth"
 
-export default function AuthCallbackPage() {
+function CallbackContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [error, setError] = useState<string | null>(null)
@@ -94,5 +94,17 @@ export default function AuthCallbackPage() {
         )}
       </div>
     </main>
+  )
+}
+
+export default function AuthCallbackPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-[#FEE500] flex flex-col items-center justify-center px-8">
+        <Loader2 className="w-12 h-12 animate-spin text-[#3C1E1E]" />
+      </main>
+    }>
+      <CallbackContent />
+    </Suspense>
   )
 }

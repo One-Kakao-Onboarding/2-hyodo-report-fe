@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { KakaoLogin } from "@/components/kakao-login"
 import { KakaoFriendList } from "@/components/kakao-friend-list"
 import { SeniorApproval } from "@/components/senior-approval"
@@ -8,6 +8,7 @@ import { HyodoReport } from "@/components/hyodo-report"
 import { MemorialChat } from "@/components/memorial-chat"
 import { PastReports } from "@/components/past-reports"
 import { ReportDetail } from "@/components/report-detail"
+import { getUserInfo, isAuthenticated, logout as handleLogout } from "@/lib/auth"
 import type { KakaoUser, ConnectedParent } from "@/types/chat"
 
 // 샘플 데이터
@@ -30,6 +31,27 @@ const SAMPLE_PARENTS: ConnectedParent[] = [
 export default function Home() {
   // 인증 상태
   const [kakaoUser, setKakaoUser] = useState<KakaoUser | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // 로그인 상태 확인
+  useEffect(() => {
+    const checkAuth = () => {
+      if (isAuthenticated()) {
+        const userInfo = getUserInfo()
+        if (userInfo) {
+          setKakaoUser({
+            id: userInfo.userId.toString(),
+            name: userInfo.nickname,
+            avatarUrl: userInfo.profileImageUrl,
+            phone: userInfo.email,
+          })
+        }
+      }
+      setIsLoading(false)
+    }
+
+    checkAuth()
+  }, [])
 
   // 앱 상태
   const [view, setView] = useState<
@@ -38,6 +60,15 @@ export default function Home() {
   const [selectedParent, setSelectedParent] = useState<ConnectedParent | null>(null)
   const [selectedReportId, setSelectedReportId] = useState<string | null>(null)
   const [connectedParents, setConnectedParents] = useState<ConnectedParent[]>(SAMPLE_PARENTS)
+
+  // 로딩 중
+  if (isLoading) {
+    return (
+      <main className="min-h-screen bg-[#FEE500] flex items-center justify-center">
+        <div className="text-[#3C1E1E] text-lg">로딩 중...</div>
+      </main>
+    )
+  }
 
   // 로그인 전
   if (!kakaoUser) {
@@ -152,7 +183,7 @@ export default function Home() {
       onUpdateParent={(updatedParent) => {
         setConnectedParents((prev) => prev.map((p) => (p.id === updatedParent.id ? updatedParent : p)))
       }}
-      onLogout={() => setKakaoUser(null)}
+      onLogout={handleLogout}
     />
   )
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
+import { getKakaoLoginUrl } from "@/lib/auth"
 import type { KakaoUser } from "@/types/chat"
 
 interface KakaoLoginProps {
@@ -13,15 +14,15 @@ export function KakaoLogin({ onLogin }: KakaoLoginProps) {
 
   const handleKakaoLogin = () => {
     setIsLoading(true)
-    // 실제로는 카카오 OAuth 로그인
-    setTimeout(() => {
-      onLogin({
-        id: "user-1",
-        name: "홍길동",
-        avatarUrl: "/korean-person-profile.jpg",
-        phone: "010-1234-5678",
-      })
-    }, 1200)
+    try {
+      // 카카오 OAuth 로그인 페이지로 리다이렉트
+      const loginUrl = getKakaoLoginUrl("CHILD")
+      window.location.href = loginUrl
+    } catch (error) {
+      console.error("Kakao login error:", error)
+      setIsLoading(false)
+      alert("카카오 로그인 설정이 올바르지 않습니다.")
+    }
   }
 
   return (

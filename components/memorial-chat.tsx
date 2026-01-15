@@ -247,8 +247,8 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
               }}
               className="w-full p-4 bg-purple-900/50 rounded-xl text-left mb-2"
             >
-              <p className="text-[15px] font-medium text-white">이야기 간직하기</p>
-              <p className="text-[12px] text-purple-300 mt-0.5">{parent.name}님의 이야기를 여기까지 간직합니다</p>
+              <p className="text-[15px] font-medium text-white">{parent.name}님의 소풍 마치기</p>
+              <p className="text-[12px] text-purple-300 mt-0.5">{parent.name}님과의 아름다운 소풍을 마칩니다.</p>
             </button>
             <button onClick={() => setShowMenu(false)} className="w-full p-4 bg-white/10 rounded-xl">
               <p className="text-[15px] text-white">닫기</p>
@@ -273,11 +273,6 @@ export function MemorialChat({ parent, onBack, onEndMemorial }: MemorialChatProp
                 {parent.name}님은 별이 되어
                 <br />
                 당신 곁에 영원히 함께합니다.
-              </p>
-              <p className="text-[13px] text-purple-300/80 mt-2">
-                어두운 밤이 외롭지 않게,
-                <br />
-                별빛으로 비춰드릴게요.
               </p>
             </div>
             <div className="flex border-t border-purple-500/30">
